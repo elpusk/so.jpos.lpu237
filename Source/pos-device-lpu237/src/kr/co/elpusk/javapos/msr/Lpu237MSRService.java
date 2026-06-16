@@ -27,7 +27,7 @@ public class Lpu237MSRService implements JposServiceInstance, MSRService111, Run
 		cmd_none, cmd_start_wait
 	}	
 	
-	private static final long serialVersionUID = 2017082300;
+	private static final long serialVersionUID = 2026061600;
 	private static int n_uid = 82300;
 	
 	private static final int iso_buffer_size = 120;
@@ -315,7 +315,7 @@ public class Lpu237MSRService implements JposServiceInstance, MSRService111, Run
         return this.state;
     }
     
-    //private static final String deviceControlDescription = "POS MSR JavaPOS Control, (C) 2017 Elpusk.Co.,Ltd.";//R
+    //private static final String deviceControlDescription = "POS MSR JavaPOS Control, (C) 2026 Elpusk.Co.,Ltd.";//R
     /* (non-Javadoc)
 	 * @see kr.co.elpusk.javapos.msr.MSRService#getDeviceControlDescription()
 	 */
@@ -335,7 +335,7 @@ public class Lpu237MSRService implements JposServiceInstance, MSRService111, Run
     	return deviceControlVersion;
     }
 */    
-    private static final String deviceServiceDescription = "LPU237 MSR JPOS Service Driver, (C) 2017 Elpusk.Co.,Ltd.";//R
+    private static final String deviceServiceDescription = "LPU237 MSR JPOS Service Driver, (C) 2026 Elpusk.Co.,Ltd.";//R
     /* (non-Javadoc)
 	 * @see kr.co.elpusk.javapos.msr.MSRService#getDeviceServiceDescription()
 	 */

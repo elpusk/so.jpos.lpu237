@@ -1,7 +1,6 @@
 package kr.co.elpusk.javapos.msr;
 
 import java.lang.reflect.Constructor;
-
 import jpos.JposConst;
 import jpos.JposException;
 import jpos.config.JposEntry;
@@ -10,6 +9,7 @@ import jpos.loader.JposServiceInstanceFactory;
 
 public class Lpu237ServiceInstanceFactory implements JposServiceInstanceFactory
 {
+    @Override
     public JposServiceInstance createInstance(String s, JposEntry jposentry)
             throws JposException {
         if (!jposentry.hasPropertyWithName("serviceClass")) {
