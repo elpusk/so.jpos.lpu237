@@ -10,7 +10,6 @@ import jpos.loader.JposServiceInstanceFactory;
 
 public class Lpu237ServiceInstanceFactory implements JposServiceInstanceFactory
 {
-    //@SuppressWarnings("unchecked")
     public JposServiceInstance createInstance(String s, JposEntry jposentry)
             throws JposException {
         if (!jposentry.hasPropertyWithName("serviceClass")) {
@@ -20,9 +19,20 @@ public class Lpu237ServiceInstanceFactory implements JposServiceInstanceFactory
 
         try {
             String s1 = (String) jposentry.getPropertyValue("serviceClass");
+            if (s1 == null || s1.trim().isEmpty()) {
+                throw new JposException(JposConst.JPOS_E_NOSERVICE,
+                        "The 'serviceClass' property is empty");
+            }
             Class<?> class1 = Class.forName(s1);
-            Constructor<?> constructor = class1.getConstructor(new Class[0]);
-            return (JposServiceInstance) constructor.newInstance(new Object[0]);
+            Constructor<?> constructor = class1.getConstructor();
+            Object instance = constructor.newInstance();
+            if (!(instance instanceof JposServiceInstance)) {
+                throw new JposException(JposConst.JPOS_E_NOSERVICE,
+                        "The serviceClass does not implement JposServiceInstance: " + s1);
+            }
+            return (JposServiceInstance) instance;
+        } catch (JposException jposException) {
+            throw jposException;
         } catch (Exception exception) {
             throw new JposException(JposConst.JPOS_E_NOSERVICE,
                     "Could not create the service instance!", exception);
