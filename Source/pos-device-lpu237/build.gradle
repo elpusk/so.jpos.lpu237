@@ -1,0 +1,88 @@
+plugins {
+    id 'java'
+}
+
+group   = 'kr.co.elpusk'
+version = '1.11.0'
+
+// ──────────────────────────────────────────────
+// Java 컴파일 설정
+// 원본 Eclipse 설정: 1.5
+// 1.5/1.6 → JDK 17+ 미지원, 1.7 → obsolete 경고
+// 소스 코드 변경 없이 호환되는 1.8 로 상향
+// ──────────────────────────────────────────────
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+// ──────────────────────────────────────────────
+// 소스 / 출력 디렉토리
+// Eclipse .classpath 와 동일하게 유지
+// ──────────────────────────────────────────────
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+        output.resourcesDir = file('bin')
+    }
+}
+
+tasks.named('compileJava') {
+    destinationDirectory = file('bin')
+    options.compilerArgs += [
+        '-Xlint:-options',       // source/target obsolete 경고 억제
+        '-Xlint:-deprecation'    // deprecated API 경고 억제
+    ]
+}
+
+// ──────────────────────────────────────────────
+// 외부 JAR 의존성
+// Release 폴더 내 JAR 를 직접 참조 (Maven 저장소 불필요)
+// ──────────────────────────────────────────────
+def jposLibDir = file('../../Release/javapos/jposlib')
+
+dependencies {
+    compileOnly fileTree(dir: jposLibDir, include: ['jpos114.jar', 'jpos114-controls.jar', 'xerces.jar'])
+}
+
+// ──────────────────────────────────────────────
+// JAR 패키징 설정
+// 출력 파일명: JposLpu237MsrSO.jar
+// ──────────────────────────────────────────────
+jar {
+    archiveBaseName    = 'JposLpu237MsrSO'
+    archiveVersion     = ''
+    archiveClassifier  = ''
+
+    manifest {
+        attributes(
+            'Implementation-Title'  : 'LPU237 MSR JPOS Service Driver',
+            'Implementation-Version': project.version,
+            'Implementation-Vendor' : 'Elpusk Co.,Ltd.',
+            'Built-By'              : 'Gradle'
+        )
+    }
+}
+
+// ──────────────────────────────────────────────
+// 빌드 후 JAR 를 Release 폴더에 자동 복사
+// ──────────────────────────────────────────────
+def releaseJarDir = file('../../Release/javapos/lpu237lib')
+
+tasks.register('copyJarToRelease', Copy) {
+    dependsOn jar
+    from   jar.archiveFile
+    into   releaseJarDir
+    description = 'JAR 를 Release/javapos/lpu237lib/ 에 복사'
+}
+
+build.finalizedBy copyJarToRelease
+
+// ──────────────────────────────────────────────
+// 인코딩 설정
+// ──────────────────────────────────────────────
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

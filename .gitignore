@@ -23,6 +23,23 @@
 hs_err_pid*
 replay_pid*
 
-# Editor directories and files
+# Eclipse 프로젝트 파일 (미사용)
+.classpath
+.project
+.settings/
+*.launch
+
+# Gradle build output
+.gradle/
+build/
+Source/pos-device-lpu237/.gradle/
+Source/pos-device-lpu237/build/
+
+# Gradle wrapper jar (binary) — properties 파일만 버전 관리
+Source/pos-device-lpu237/gradle/wrapper/gradle-wrapper.jar
+
+# VSCode: settings, launch, extensions 는 버전 관리에 포함
 .vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
 !.vscode/extensions.json

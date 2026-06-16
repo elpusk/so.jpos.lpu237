@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        // Java 개발 필수 확장 (Microsoft 공식 팩)
+        "vscjava.vscode-java-pack",
+        // Java 언어 서버 (코드 완성, 오류 표시, 리팩토링)
+        "redhat.java",
+        // Java 디버거
+        "vscjava.vscode-java-debug",
+        // Java 테스트 러너
+        "vscjava.vscode-java-test",
+        // Gradle 빌드 지원 (task 실행, 의존성 뷰)
+        "vscjava.vscode-gradle"
+    ]
+}

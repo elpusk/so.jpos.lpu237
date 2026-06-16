@@ -1,0 +1,28 @@
+{
+    // ──────────────────────────────────────────────
+    // Gradle 빌드 도구 설정
+    // ──────────────────────────────────────────────
+    // Gradle for Java 확장이 빌드 파일을 찾는 경로
+    "java.import.gradle.enabled": true,
+    "java.import.maven.enabled": false,
+    // Gradle wrapper 사용 (별도 Gradle 설치 불필요)
+    "java.import.gradle.wrapper.enabled": true,
+    // Gradle 프로젝트 루트 (workspace root 기준 상대경로)
+    "java.import.gradle.projectRootPath": "${workspaceFolder}/Source/pos-device-lpu237",
+
+    // ──────────────────────────────────────────────
+    // 파일 탐색기에서 숨길 항목
+    // ──────────────────────────────────────────────
+    "files.exclude": {
+        "**/.git": true,
+        "**/bin/**/*.class": true,
+        "**/build": true
+    },
+
+    // ──────────────────────────────────────────────
+    // 에디터 기본 설정
+    // ──────────────────────────────────────────────
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false,
+    "files.encoding": "utf8"
+}

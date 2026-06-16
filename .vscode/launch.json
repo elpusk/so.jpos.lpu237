@@ -1,0 +1,45 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // ─────────────────────────────────────────────
+            // TestMSR 실행 (32bit JVM)
+            // Release/javapos/TestSample/TestMsr32.bat 와 동일한 환경
+            // ─────────────────────────────────────────────
+            "type": "java",
+            "name": "TestMSR (32bit)",
+            "request": "launch",
+            "mainClass": "TestMSR",
+            "classPaths": [
+                "${workspaceFolder}/Release/javapos/TestSample",
+                "${workspaceFolder}/Release/javapos/jposlib/jpos114.jar",
+                "${workspaceFolder}/Release/javapos/jposlib/jpos114-controls.jar",
+                "${workspaceFolder}/Release/javapos/jposlib/xerces.jar",
+                "${workspaceFolder}/Release/javapos/lpu237lib/JposLpu237MsrSO.jar"
+            ],
+            "cwd": "${workspaceFolder}/Release/javapos/TestSample",
+            // 32bit JVM 경로 — 설치 환경에 맞게 수정
+            "javaExec": "C:/Program Files (x86)/Java/jre1.8.0_144/bin/java",
+            "vmArgs": "-Djava.library.path=${workspaceFolder}/Release/javapos/lpu237lib/x86"
+        },
+        {
+            // ─────────────────────────────────────────────
+            // TestMSR 실행 (64bit JVM)
+            // Release/javapos/TestSample/TestMsr64.bat 와 동일한 환경
+            // ─────────────────────────────────────────────
+            "type": "java",
+            "name": "TestMSR (64bit)",
+            "request": "launch",
+            "mainClass": "TestMSR",
+            "classPaths": [
+                "${workspaceFolder}/Release/javapos/TestSample",
+                "${workspaceFolder}/Release/javapos/jposlib/jpos114.jar",
+                "${workspaceFolder}/Release/javapos/jposlib/jpos114-controls.jar",
+                "${workspaceFolder}/Release/javapos/jposlib/xerces.jar",
+                "${workspaceFolder}/Release/javapos/lpu237lib/JposLpu237MsrSO.jar"
+            ],
+            "cwd": "${workspaceFolder}/Release/javapos/TestSample",
+            "vmArgs": "-Djava.library.path=${workspaceFolder}/Release/javapos/lpu237lib/x64"
+        }
+    ]
+}
