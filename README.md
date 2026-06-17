@@ -4,6 +4,8 @@
 - device io 는 windows 경우 tg_lpu237_dll.dll, 리눅스의 경우 libtg_lpu237_dll.so 를 사용
 - IDE 는 vscode
 - builder 는 gradle
+- JDK 17
+- 지원 OS win11 x86, x64, Debian12 x64
 
 ## 프로젝트 구조
 
@@ -58,3 +60,8 @@ C++ DLL → lpu237CallbackReadDone() [static]
 ## 빌드 환경
 
 - Gradle
+
+## Target
+
+- Target Bytecode : Java 8
+- 지원 JVM : Java 8 이상
