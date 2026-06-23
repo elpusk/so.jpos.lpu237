@@ -15,8 +15,8 @@ cd "$SCRIPT_DIR" || exit 1
 # ── 대상 파일 목록 ──────────────────────────────────────────────────────────
 EXECUTABLES="
   Source/pos-device-lpu237/gradlew
-  Release/javapos/TestSample/debian_x64/javac_TestMsr_debian_x64.sh
-  Release/javapos/TestSample/debian_x64/TestMsr_debian_x64.sh
+  Release/javapos/TestSample/javac_TestMsr_debian_x64.sh
+  Release/javapos/TestSample/TestMsr_debian_x64.sh
   setup_linux.sh
 "
 
@@ -43,8 +43,8 @@ else
 fi
 
 echo ""
-echo "─────────────────────────────────────────"
-echo "  빌드    : cd Source/pos-device-lpu237"
-echo "            ./gradlew build"
-echo "  테스트  : Release/javapos/TestSample/debian_x64/TestMsr_debian_x64.sh"
-echo "─────────────────────────────────────────"
+echo "─────────────────────────────────────────────────────────────"
+echo "  빌드    : cd Source/pos-device-lpu237 && ./gradlew build"
+echo "  컴파일  : sh Release/javapos/TestSample/javac_TestMsr_debian_x64.sh"
+echo "  테스트  : sh Release/javapos/TestSample/TestMsr_debian_x64.sh"
+echo "─────────────────────────────────────────────────────────────"
