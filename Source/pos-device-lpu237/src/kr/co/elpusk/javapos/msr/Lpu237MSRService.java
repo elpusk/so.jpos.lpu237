@@ -1314,7 +1314,10 @@ public class Lpu237MSRService implements JposServiceInstance, MSRService111, Run
 	{
 		try{
 			if( !isLoadLibrary ){
-				System.loadLibrary("tg_lpu237_jni");//load tg_lpu237_jni.dll
+				// win 의 경우, classpath 에 있는 path 에서 tg_lpu237_jni.dll 로드
+				// linux 의 경우, classpath 에 있는 path 에서  libtg_lpu237_jni.dll 로드
+				// classpath 설정에 따라 x_jni 로드 위치 변경 가능하므로, 현재 JVM 의 arch 에 대해 검사 불필요.
+				System.loadLibrary("tg_lpu237_jni");//load tg_lpu237_jni.dll,  환경변수 path 로 부터 로드.
 				tracer.println("loadLibrary : OK . \n");
 				isLoadLibrary = true;
 				//System.out.println("loadLibrary : OK .\n");

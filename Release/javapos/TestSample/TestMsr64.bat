@@ -26,9 +26,10 @@ set lp=%lp%;..\lpu237lib\x64
 
 REM in this case we set it to the lib directory
 REM if the library path is not set then the directory
-REM where you have tg_lpu237_dll.dll loaded must be in
-REM the executable PATH.
-set path=%path%;..\lpu237lib\x64
+REM where you have tg_lpu237_dll.dll loaded by tg_lpu237_jni.ini 
+REM [subcomponent_path] section, tg_lpu237_dll key value or
+REM in the same directory as tg_lpu237_jni.dll.
+REM NO NEED OLD STYLE : set path=%path%;..\lpu237lib\x64
 
 
 REM *****************************************
