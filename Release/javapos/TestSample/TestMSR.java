@@ -48,6 +48,7 @@ public class TestMSR implements DataListener {
 
           }catch(JposException e){
                System.err.print(e);
+               System.exit(1); // Linux: JNI non-daemon thread 가 JVM 종료를 막으므로 강제 종료
           }
       }
 
