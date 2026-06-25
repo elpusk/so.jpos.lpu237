@@ -29,7 +29,7 @@ CP="$CP:$JAVAPOS_DIR/lpu237lib/JposLpu237MsrSO.jar"
 # ***************************************
 # * JNI .so 경로                         *
 # ***************************************
-JAVA_LIB_PATH="$JAVAPOS_DIR/lpu237lib"
+JAVA_LIB_PATH="$LPU237LIB_DIR"
 
 # ***************************************
 # * jpos.xml 을 찾을 수 있도록            *
