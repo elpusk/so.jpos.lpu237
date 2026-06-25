@@ -18,10 +18,11 @@ REM ****************************************
 REM * Setup the Library Path for JNI DLLs(tg_lpu237_jni.dll)  *
 REM ****************************************
 REM %lp% is the library path used when loading
-REM java native methods
+REM java native methods. tg_lpu237_jni 가 있는 path 를 지정.
 REM usually:
 REM set lp=c:\windows\system32
-set lp=%lp%;..\lpu237lib\x86
+REM set lp=%lp%;..\lpu237lib\x86
+set lp=%lp%;"C:\Program Files (x86)\elpusk\00000006\coffee_manager\dll\x86"
 
 REM in this case we set it to the lib directory
 REM if the library path is not set then the directory
@@ -33,7 +34,8 @@ REM NO NEED OLD STYLE : set path=%path%;..\lpu237lib\x86
 REM *****************************************
 REM *              RUN TestMSR              *
 REM *****************************************
-java -cp %classpath% -Djava.library.path=%lp% TestMSR
+REM java -cp %classpath% -Djava.library.path=%lp% TestMSR //default jvm 으로 TestMSR 실행
+C:\local\openjdk-1.8.0.332_x86\bin\java.exe -cp %classpath% -Djava.library.path=%lp% TestMSR
 
 REM *****************************************
 REM *       Restore the Old Classpath       *
