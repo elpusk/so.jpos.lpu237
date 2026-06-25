@@ -15,7 +15,8 @@ TESTSAMPLE_DIR="$SCRIPT_DIR"
 JAVAPOS_DIR="$TESTSAMPLE_DIR/.."
 
 JPOSLIB_DIR="$JAVAPOS_DIR/jposlib"
-LPU237LIB_DIR="$JAVAPOS_DIR/lpu237lib/debian_x64"
+# LPU237LIB_DIR="$JAVAPOS_DIR/lpu237lib/debian_x64" ; jni so 가 있는 경로
+LPU237LIB_DIR="/usr/share/elpusk/program/00000006/coffee_manager/so"
 
 # ***************************************
 # * Classpath 설정 (TestMsr64.bat 동일)  *
