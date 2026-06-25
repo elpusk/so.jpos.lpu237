@@ -24,12 +24,12 @@ LPU237LIB_DIR="/usr/share/elpusk/program/00000006/coffee_manager/so"
 CP="$JPOSLIB_DIR/jpos114.jar"
 CP="$CP:$JPOSLIB_DIR/xerces.jar"
 CP="$CP:$TESTSAMPLE_DIR"
-CP="$CP:$LPU237LIB_DIR/../JposLpu237MsrSO.jar"
+CP="$CP:$JAVAPOS_DIR/lpu237lib/JposLpu237MsrSO.jar"
 
 # ***************************************
 # * JNI .so 경로                         *
 # ***************************************
-JAVA_LIB_PATH="$LPU237LIB_DIR"
+JAVA_LIB_PATH="$JAVAPOS_DIR/lpu237lib"
 
 # ***************************************
 # * jpos.xml 을 찾을 수 있도록            *
