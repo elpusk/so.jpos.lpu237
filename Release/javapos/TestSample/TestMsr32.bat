@@ -22,7 +22,8 @@ REM java native methods. tg_lpu237_jni 가 있는 path 를 지정.
 REM usually:
 REM set lp=c:\windows\system32
 REM set lp=%lp%;..\lpu237lib\x86
-set lp=%lp%;"C:\Program Files (x86)\elpusk\00000006\coffee_manager\dll\x86"
+REM set lp=%lp%;"C:\Program Files (x86)\elpusk\00000006\coffee_manager\dll\x86" // x86 cf2 설치시
+set lp=%lp%;"C:\Program Files\elpusk\00000006\coffee_manager\dll\x86"
 
 REM in this case we set it to the lib directory
 REM if the library path is not set then the directory
