@@ -1,11 +1,12 @@
 # Javapos Service Object of lpu237
 
-- Jpos device services of lpu237 Magnetic strip reader
+- Javapos Service Object of lpu237 Magnetic strip reader
 - device io 는 windows 경우 tg_lpu237_dll.dll, 리눅스의 경우 libtg_lpu237_dll.so 를 사용
 - IDE 는 vscode
 - builder 는 gradle
-- JDK 17
+- JDK 17 로 빌드
 - 지원 OS win11 x86, x64, Debian12 x64
+- test 는 [JVM](https://en.wikipedia.org/wiki/Java_virtual_machine) 8
 
 ## 프로젝트 구조
 
@@ -16,7 +17,8 @@
 
 ``` text
 so.jpos.lpu237/
-├── Source/pos-device-lpu237/     ← Eclipse Java 프로젝트 (소스)
+├── setup_linux.sh     ← git clone 직후 Linux 환경 할 때만 1회 실행
+├── Source/pos-device-lpu237/     ← Java 프로젝트 (소스)
 │   └── src/kr/co/elpusk/javapos/msr/
 │       ├── Lpu237MSRService.java           ← 핵심 서비스 구현
 │       └── Lpu237ServiceInstanceFactory.java ← 인스턴스 팩토리
@@ -24,9 +26,18 @@ so.jpos.lpu237/
     ├── jposlib/                  ← JavaPOS 공통 라이브러리 (jpos114.jar 등)
     ├── lpu237lib/
     │   ├── JposLpu237MsrSO.jar  ← 빌드 결과물
-    │   ├── x86/ tg_lpu237_*.dll
-    │   └── x64/ tg_lpu237_*.dll
+    │   ├── x86/ tg_lpu237_jni.ini  ← debugging 용 tg_lpu237_jni.dll 설정 
+    │   ├── x64/ tg_lpu237_jni.ini  ← debugging 용 tg_lpu237_jni.dll 설정
+    │   └── debian_x64/ tg_lpu237_jni.ini  ← debugging 용 libtg_lpu237_jni.so 설정
     └── TestSample/               ← 테스트 코드 및 배치 파일
+        ├── TestMSR.java  ←  JposLpu237MsrSO.jar 사용 예제.
+        ├── javac_TestMsr.bat  ← win 에서 default javac 로 TestMSR.java 빌드
+        ├── javac_TestMsr_debian_x64.sh  ← debian12 x64 에서 default javac 로 TestMSR.java 빌드
+        ├── TestMsr_debian_x64.sh  ← debian12 x64 에서 TestMSR 실행
+        ├── TestMsr32.bat  ← win 의 jvm x86 에서  TestMSR 실행
+        └── TestMsr64.bat  ← win 의 jvm x64 에서  TestMSR 실행
+
+
 ```
 
 ## 핵심 클래스 역할
@@ -59,9 +70,15 @@ C++ DLL → lpu237CallbackReadDone() [static]
 
 ## 빌드 환경
 
-- Gradle
+- Gradle 사용.
 
 ## Target
 
 - Target Bytecode : Java 8
 - 지원 JVM : Java 8 이상
+
+## 빌드 방법
+
+- 현재 directory 를 Source/pos-device-lpu237 directory 로 변경.
+- win 의 경우 : `./gradlew.bat build` 실행
+- debian12 의 경우 : `./gradlew build` 실행
