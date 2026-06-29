@@ -105,3 +105,4 @@ C++ DLL → lpu237CallbackReadDone() [static]
 - 현재 directory 를 Source/pos-device-lpu237 directory 로 변경.
 - win 에서 빌드 할 경우 : `./gradlew.bat build` 실행
 - debian12  에서 빌드 할 경우 : `./gradlew build` 실행
+- win 에서 SBOM 생성 :  ...Source\pos-device-lpu237>./gradlew.bat cyclonedxBom 
